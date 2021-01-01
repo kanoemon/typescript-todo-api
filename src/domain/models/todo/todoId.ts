@@ -10,6 +10,10 @@ class TodoId {
   get value() {
     return this._value;
   }
+
+  equals(other: TodoId): boolean {
+    return this._value === other.value;
+  }
 }
 
 export default TodoId;

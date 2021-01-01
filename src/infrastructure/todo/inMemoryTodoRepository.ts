@@ -5,8 +5,13 @@ import ITodoRepository from '../../domain/models/todo/iTodoRepository';
 class InMemoryTodoRepository implements ITodoRepository{
   private _todoList: Todo[] = [];
 
-  find(todoId: TodoId): Todo {
-    return new Todo(todoId);
+  find(todoId: TodoId): Todo | null {
+    for(var todo of this._todoList) {
+      if(todo.todoId.equals(todoId)) {
+        return todo;
+      }
+    }
+    return null;
   }
 
   save(todo: Todo): void {

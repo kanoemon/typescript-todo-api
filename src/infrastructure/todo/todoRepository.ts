@@ -3,7 +3,7 @@ import Todo from '../../domain/models/todo/todo';
 import ITodoRepository from '../../domain/models/todo/iTodoRepository';
 
 class TodoRepository implements ITodoRepository{
-  find(todoId: TodoId): Todo {
+  find(todoId: TodoId): Todo | null {
     return new Todo(todoId);
   }
 
