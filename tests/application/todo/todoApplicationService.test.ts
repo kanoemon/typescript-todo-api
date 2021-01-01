@@ -9,8 +9,8 @@ describe('get', () => {
     // データの登録
     let todoRepository = new InMemoryTodoRepository();
 
-    let todoWithId1 = new Todo(new TodoId('1'), 'todo1', new Datetime('2020/12/31 12:00:00'));
-    let todoWithId2 = new Todo(new TodoId('2'), 'todo2', new Datetime('2021/01/01 13:00:00'));
+    let todoWithId1 = new Todo(new TodoId('1'), 'todo1', new Datetime(new Date('2020/12/31 12:00:00')));
+    let todoWithId2 = new Todo(new TodoId('2'), 'todo2', new Datetime(new Date('2021/01/01 13:00:00')));
     todoRepository.save(todoWithId1);
     todoRepository.save(todoWithId2);
 

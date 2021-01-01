@@ -13,11 +13,11 @@ class InMemoryTodoRepository implements ITodoRepository{
         return new Todo(
           new TodoId(todo.id),
           todo.name,
-          new Datetime(todo.created_datetime)
+          new Datetime(new Date(todo.created_datetime))
         );
       }
     }
-    return new Todo(new TodoId('1'), 'a', new Datetime('2020/12/11 00:00:00'));
+    return new Todo(new TodoId('1'), 'a', new Datetime(new Date()));
 
     /*
     for(var todo of this._todoList) {

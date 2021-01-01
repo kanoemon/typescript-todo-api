@@ -1,8 +1,8 @@
 class Datetime {
   private _datetime: Date;
 
-  constructor(datetime: string) {
-    this._datetime = new Date(datetime);
+  constructor(datetime: Date) {
+    this._datetime = datetime;;
   }
 
   getText(): string {

@@ -14,15 +14,12 @@ class TodoApplicationService {
     let targetId = new TodoId(todoId);
     return this._todoRepository.find(targetId);
   }
-  get1(todoId: string): Todo {
-    return new Todo(new TodoId('1'), 'todo1', new Datetime('2020/12/31 12:00:00'));
-  }
 
   create(todoId: string, name: string):void {
     let todo = new Todo(
       new TodoId(todoId),
       name,
-      new Datetime('2020/12/11 11:00:00')
+      new Datetime(new Date())
     );
     this._todoRepository.save(todo);
   }
