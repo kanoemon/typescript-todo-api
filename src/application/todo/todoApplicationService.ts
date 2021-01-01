@@ -9,7 +9,7 @@ class TodoApplicationService {
     this._todoRepository = todoRepository;
   }
 
-  get(todoId: string): Todo {
+  get(todoId: string): Todo | null {
     let targetId = new TodoId(todoId);
     return this._todoRepository.find(targetId);
   }
