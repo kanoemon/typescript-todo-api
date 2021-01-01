@@ -6,9 +6,4 @@ describe('get', () => {
     const res = await request(app).get('/todo/1');
     expect(res.status).toBe(200);
   });
-
-  it('複数件の取得', async () => {
-    const res = await request(app).get('/todo');
-    expect(res.text).toBe('success');
-  });
 });
