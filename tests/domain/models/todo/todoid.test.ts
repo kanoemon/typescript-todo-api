@@ -1,6 +1,6 @@
 import TodoId from '../../../../src/domain/models/todo/todoid';
 
-describe ('datetime', () => {
+describe ('todoid', () => {
   describe ('オブジェクトの生成', () => {
     it ('正常系の生成', () => {
       let todoId = new TodoId(1);

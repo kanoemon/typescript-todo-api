@@ -7,6 +7,9 @@ class Todo {
   private _createdDatetime: Datetime;
 
   constructor(todoId: TodoId, name: string, createdDatetime: Datetime) {
+    if (name === '') {
+      throw new TypeError('empty name');
+    }
     this._todoId = todoId;
     this._name = name;
     this._createdDatetime = createdDatetime;
@@ -22,6 +25,10 @@ class Todo {
 
   get createdDatetime(): Datetime {
     return this._createdDatetime;
+  }
+
+  equals(other: Todo): boolean {
+    return this._todoId.equals(other.todoId);
   }
 }
 
