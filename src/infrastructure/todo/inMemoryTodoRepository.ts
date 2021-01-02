@@ -19,6 +19,10 @@ class InMemoryTodoRepository implements ITodoRepository{
     return null;
   }
 
+  findAll(): Todo[] {
+    return this._todoList;
+  }
+
   save(targetTodo: Todo): void {
     let index: number = this._todoList.findIndex((todo) => todo.equals(targetTodo));
     if (index === -1) {

@@ -19,6 +19,11 @@ class TodoApplicationService {
     return todo;
   }
 
+  getList(): Todo[] {
+    let todoList: Todo[] = this._todoRepository.findAll();
+    return todoList;
+  }
+
   create(name: string): void {
     let nowDatetime: Date = new Date();
     let todo: Todo = new Todo(

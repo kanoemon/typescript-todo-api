@@ -27,6 +27,32 @@ describe('get', () => {
   });
 });
 
+describe('getList', () => {
+  it('データが存在する', () => {
+    // データの登録
+    let todoRepository = new InMemoryTodoRepository();
+
+    let todoWithId1 = new Todo(new TodoId(1), 'todo1', new Datetime('2020/12/31 12:00:00'));
+    let todoWithId2 = new Todo(new TodoId(2), 'todo2', new Datetime('2021/01/01 13:00:00'));
+    todoRepository.save(todoWithId1);
+    todoRepository.save(todoWithId2);
+
+    let todoApplicationService = new TodoApplicationService(todoRepository);
+    expect(todoApplicationService.getList()).toEqual([
+      todoWithId1,
+      todoWithId2
+    ]);
+  });
+
+  it('データが存在しない', () => {
+    let todoRepository = new InMemoryTodoRepository();
+    let todoApplicationService = new TodoApplicationService(todoRepository);
+    expect(() => {
+      todoApplicationService.get(999);
+    }).toThrow();
+  });
+});
+
 describe('create', () => {
   it('データを登録する', () => {
     let todoRepository = new InMemoryTodoRepository();
