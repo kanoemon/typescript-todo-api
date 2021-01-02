@@ -12,14 +12,19 @@ class TodoApplicationService {
 
   get(todoId: number): Todo {
     let targetId = new TodoId(todoId);
-    return this._todoRepository.find(targetId);
+    let todo = this._todoRepository.find(targetId);
+    if (todo == null) {
+      throw new Error('todo not found');
+    }
+    return todo;
   }
 
   create(todoId: number, name: string):void {
+    let nowDatetime = new Date();
     let todo = new Todo(
       new TodoId(todoId),
       name,
-      new Datetime('2020/12/12 00:00:00')
+      new Datetime(nowDatetime.toLocaleString())
     );
     this._todoRepository.save(todo);
   }

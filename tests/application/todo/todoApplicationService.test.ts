@@ -21,13 +21,14 @@ describe('get', () => {
   it('データが存在しない', () => {
     let todoRepository = new InMemoryTodoRepository();
     let todoApplicationService = new TodoApplicationService(todoRepository);
-    //expect(todoApplicationService.get('1')).toBeNull();
+    expect(() => {
+      todoApplicationService.get(999);
+    }).toThrow();
   });
 });
 
 describe('create', () => {
   it('データを登録する', () => {
-    // データの登録
     let todoRepository = new InMemoryTodoRepository();
     let todoApplicationService = new TodoApplicationService(todoRepository);
     todoApplicationService.create(1, 'todo');
