@@ -30,6 +30,13 @@ class Todo {
   equals(other: Todo): boolean {
     return this._todoId.equals(other.todoId);
   }
+
+  changeName(name: string): void {
+    if (name === '') {
+      throw new TypeError('empty name');
+    }
+    this._name = name;
+  }
 }
 
 export default Todo;

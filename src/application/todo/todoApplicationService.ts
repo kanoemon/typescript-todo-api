@@ -11,8 +11,8 @@ class TodoApplicationService {
   }
 
   get(todoId: number): Todo {
-    let targetId = new TodoId(todoId);
-    let todo = this._todoRepository.find(targetId);
+    let targetId: TodoId = new TodoId(todoId);
+    let todo: Todo | null = this._todoRepository.find(targetId);
     if (todo == null) {
       throw new Error('todo not found');
     }
@@ -20,12 +20,23 @@ class TodoApplicationService {
   }
 
   create(name: string): void {
-    let nowDatetime = new Date();
-    let todo = new Todo(
+    let nowDatetime: Date = new Date();
+    let todo: Todo = new Todo(
       this._todoRepository.nextId(),
       name,
       new Datetime(nowDatetime.toLocaleString())
     );
+    this._todoRepository.save(todo);
+  }
+
+  updateName(todoId: number, name: string): void {
+    let targetId: TodoId = new TodoId(todoId);
+    let todo: Todo | null = this._todoRepository.find(targetId);
+    if (todo == null) {
+      throw new Error('todo not found');
+    }
+
+    todo.changeName(name);
     this._todoRepository.save(todo);
   }
 }

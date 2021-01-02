@@ -19,17 +19,20 @@ class InMemoryTodoRepository implements ITodoRepository{
     return null;
   }
 
-  save(todo: Todo): void {
-    this._todoList.push(todo);
+  save(targetTodo: Todo): void {
+    let index: number = this._todoList.findIndex((todo) => todo.equals(targetTodo));
+    if (index === -1) {
+      this._todoList.push(targetTodo);
+      return;
+    }
+    this._todoList[index] = targetTodo;
   }
 
   nextId(): TodoId {
-    let ids = this._todoList.map(todo => {
-      return todo.todoId.id;
-    });
-    if (ids.length === 0) {
+    if (this._todoList.length === 0) {
       return new TodoId(1);
     }
+    let ids = this._todoList.map(todo => todo.todoId.id);
     let maxId = Math.max(...ids);
     return new TodoId(maxId + 1);
   }
