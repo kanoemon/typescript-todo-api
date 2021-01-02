@@ -8,6 +8,14 @@ class Datetime {
     this._datetime = new Date(datetime);
   }
 
+  get datetime(): Date {
+    return this._datetime;
+  }
+
+  equals(other: Datetime): boolean {
+    return other.datetime.getTime() == this._datetime.getTime();
+  }
+
   toString(): string {
     return this._datetime.toLocaleString();
   }
