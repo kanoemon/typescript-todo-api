@@ -55,3 +55,18 @@ describe('updateName', () => {
     expect(changeTodo.name).toBe('updatetodo');
   });
 });
+
+describe('delete', () => {
+  it('データを削除する', () => {
+    let todoRepository = new InMemoryTodoRepository();
+    let todo = new Todo(new TodoId(1), 'todo', new Datetime('2020/12/31 12:00:00'));
+    todoRepository.save(todo);
+
+    let todoApplicationService = new TodoApplicationService(todoRepository);
+    todoApplicationService.delete(1);
+
+    expect(() => {
+      todoApplicationService.get(1);
+    }).toThrow();
+  });
+});

@@ -28,6 +28,11 @@ class InMemoryTodoRepository implements ITodoRepository{
     this._todoList[index] = targetTodo;
   }
 
+  delete(targetTodo: Todo): void {
+    let index: number = this._todoList.findIndex((todo) => todo.equals(targetTodo));
+    this._todoList.splice(index, 1);
+  }
+
   nextId(): TodoId {
     if (this._todoList.length === 0) {
       return new TodoId(1);

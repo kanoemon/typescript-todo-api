@@ -29,6 +29,15 @@ class TodoApplicationService {
     this._todoRepository.save(todo);
   }
 
+  delete(todoId: number): void {
+    let targetId: TodoId = new TodoId(todoId);
+    let todo: Todo | null = this._todoRepository.find(targetId);
+    if (todo == null) {
+      throw new Error('todo not found');
+    }
+    this._todoRepository.delete(todo);
+  }
+
   updateName(todoId: number, name: string): void {
     let targetId: TodoId = new TodoId(todoId);
     let todo: Todo | null = this._todoRepository.find(targetId);
