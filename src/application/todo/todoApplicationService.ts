@@ -19,10 +19,10 @@ class TodoApplicationService {
     return todo;
   }
 
-  create(todoId: number, name: string):void {
+  create(name: string): void {
     let nowDatetime = new Date();
     let todo = new Todo(
-      new TodoId(todoId),
+      this._todoRepository.nextId(),
       name,
       new Datetime(nowDatetime.toLocaleString())
     );

@@ -31,9 +31,13 @@ describe('create', () => {
   it('データを登録する', () => {
     let todoRepository = new InMemoryTodoRepository();
     let todoApplicationService = new TodoApplicationService(todoRepository);
-    todoApplicationService.create(1, 'todo');
+    todoApplicationService.create('todo');
 
-    let todo = todoApplicationService.get(1);
-    expect(todo.todoId.id).toBe(1);
+    let todo1 = todoApplicationService.get(1);
+    expect(todo1.todoId.id).toBe(1);
+
+    todoApplicationService.create('todo2');
+    let todo2 = todoApplicationService.get(2);
+    expect(todo2.todoId.id).toBe(2);
   });
 });

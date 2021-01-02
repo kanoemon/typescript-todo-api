@@ -22,6 +22,17 @@ class InMemoryTodoRepository implements ITodoRepository{
   save(todo: Todo): void {
     this._todoList.push(todo);
   }
+
+  nextId(): TodoId {
+    let ids = this._todoList.map(todo => {
+      return todo.todoId.id;
+    });
+    if (ids.length === 0) {
+      return new TodoId(1);
+    }
+    let maxId = Math.max(...ids);
+    return new TodoId(maxId + 1);
+  }
 }
 
 export default InMemoryTodoRepository;
