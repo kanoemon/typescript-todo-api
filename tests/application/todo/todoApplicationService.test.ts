@@ -9,13 +9,13 @@ describe('get', () => {
     // データの登録
     let todoRepository = new InMemoryTodoRepository();
 
-    let todoWithId1 = new Todo(new TodoId('1'), 'todo1', new Datetime('2020/12/31 12:00:00'));
-    let todoWithId2 = new Todo(new TodoId('2'), 'todo2', new Datetime('2021/01/01 13:00:00'));
+    let todoWithId1 = new Todo(new TodoId(1), 'todo1', new Datetime('2020/12/31 12:00:00'));
+    let todoWithId2 = new Todo(new TodoId(2), 'todo2', new Datetime('2021/01/01 13:00:00'));
     todoRepository.save(todoWithId1);
     todoRepository.save(todoWithId2);
 
     let todoApplicationService = new TodoApplicationService(todoRepository);
-    expect(todoApplicationService.get('1')).toEqual(todoWithId1);
+    expect(todoApplicationService.get(1)).toEqual(todoWithId1);
   });
 
   it('データが存在しない', () => {
@@ -30,9 +30,9 @@ describe('create', () => {
     // データの登録
     let todoRepository = new InMemoryTodoRepository();
     let todoApplicationService = new TodoApplicationService(todoRepository);
-    todoApplicationService.create('1', 'todo');
+    todoApplicationService.create(1, 'todo');
 
-    let todo = todoApplicationService.get('1');
-    expect(todo.todoId.value).toBe('1');
+    let todo = todoApplicationService.get(1);
+    expect(todo.todoId.id).toBe(1);
   });
 });

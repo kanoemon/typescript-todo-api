@@ -10,16 +10,16 @@ class TodoApplicationService {
     this._todoRepository = todoRepository;
   }
 
-  get(todoId: string): Todo {
+  get(todoId: number): Todo {
     let targetId = new TodoId(todoId);
     return this._todoRepository.find(targetId);
   }
 
-  create(todoId: string, name: string):void {
+  create(todoId: number, name: string):void {
     let todo = new Todo(
       new TodoId(todoId),
       name,
-      new Datetime(new Date())
+      new Datetime('2020/12/12 00:00:00')
     );
     this._todoRepository.save(todo);
   }

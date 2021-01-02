@@ -5,11 +5,11 @@ import Datetime from '../../domain/models/todo/datetime';
 
 class InMemoryTodoRepository implements ITodoRepository{
   private _todoList: Todo[] = [];
-  private _todoListNew: {id: string, name: string, created_datetime: string}[] = [];
+  private _todoListNew: {id: number, name: string, created_datetime: string}[] = [];
 
   find(todoId: TodoId): Todo {
     for(var todo of this._todoListNew) {
-      if(todo.id === todoId.value) {
+      if(todo.id === todoId.id) {
         return new Todo(
           new TodoId(todo.id),
           todo.name,
@@ -17,7 +17,7 @@ class InMemoryTodoRepository implements ITodoRepository{
         );
       }
     }
-    return new Todo(new TodoId('1'), 'a', new Datetime(''));
+    return new Todo(new TodoId(1), 'a', new Datetime(''));
 
     /*
     for(var todo of this._todoList) {
@@ -35,7 +35,7 @@ class InMemoryTodoRepository implements ITodoRepository{
   save(todo: Todo): void {
     this._todoList.push(todo);
     this._todoListNew.push({
-      id: todo.todoId.value,
+      id: todo.todoId.id,
       name: todo.name,
       created_datetime: todo.createdDatetime.toString()
     });

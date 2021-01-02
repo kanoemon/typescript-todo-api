@@ -1,18 +1,16 @@
-import { threadId } from "worker_threads";
-
 class TodoId {
-  private _value: string;
+  private _id: number;
 
-  constructor(value: string) {
-    this._value = value;
+  constructor(id: number) {
+    this._id = id;
   }
 
-  get value() {
-    return this._value;
+  get id() {
+    return this._id;
   }
 
   equals(other: TodoId): boolean {
-    return this._value === other.value;
+    return this._id === other.id;
   }
 }
 
