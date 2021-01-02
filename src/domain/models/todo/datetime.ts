@@ -1,11 +1,14 @@
 class Datetime {
   private _datetime: Date;
 
-  constructor(datetime: Date) {
-    this._datetime = datetime;;
+  constructor(datetime: string) {
+    if (datetime === '') {
+      throw new TypeError('invalid datetime');
+    }
+    this._datetime = new Date(datetime);
   }
 
-  getText(): string {
+  toString(): string {
     return this._datetime.toLocaleString();
   }
 }
