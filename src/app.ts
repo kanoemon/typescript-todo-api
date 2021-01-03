@@ -11,6 +11,9 @@ app.get("/", (_req, res) => {
 `);
 });
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.use('/todo', todoRouter);
 
 if(!module.parent) {
