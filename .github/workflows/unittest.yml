@@ -25,6 +25,8 @@ jobs:
       
       - name: Change Directory
         run: cd $GITHUB_WORKSPACE
+      
+      - run: ls
 
       - name: Run tests
         run: npm run test
