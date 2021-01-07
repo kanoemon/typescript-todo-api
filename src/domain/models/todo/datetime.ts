@@ -17,7 +17,7 @@ class Datetime {
   }
 
   toString(): string {
-    return this._datetime.toLocaleString();
+    return `${this._datetime.getFullYear()}-${this._datetime.getMonth()+1}-${this._datetime.getDate()} ${this._datetime.getHours()}:${this._datetime.getMinutes().toString().padStart(2, '0')}:${this._datetime.getSeconds().toString().padStart(2, '0')}`;
   }
 }
 

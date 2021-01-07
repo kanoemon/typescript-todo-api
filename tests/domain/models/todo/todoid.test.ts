@@ -1,4 +1,4 @@
-import TodoId from '../../../../src/domain/models/todo/todoid';
+import TodoId from '../../../../src/domain/models/todo/todoId';
 
 describe ('todoid', () => {
   describe ('オブジェクトの生成', () => {
