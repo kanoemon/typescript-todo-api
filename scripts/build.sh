@@ -1,5 +1,7 @@
 #!/bin/sh
-source $HOME/.bashrc
+id
+
+source /home/ec2-user/.bashrc
 
 cd  /var/www/typescript-todo-api
 npm install
