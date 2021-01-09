@@ -3,7 +3,6 @@ os: linux
 files:
   - source: ./
     destination: /var/www/typescript-todo-api
-    runas: ec2-user
 permissions:
   - object: /
     pattern: "**"
