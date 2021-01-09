@@ -3,3 +3,6 @@ os: linux
 files:
   - source: ./
     destination: /var/www/typescript-todo-api
+hooks:
+  AfterInstall:
+    - location: scripts/build.sh
